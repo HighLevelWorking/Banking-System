@@ -14,16 +14,20 @@ def options():
     print("***************************************")
     
 def options_choosen():
-    option_choosen = input("Enter your choice (1-4): ")
-    print("***************************************")
-    return option_choosen
+    while True:
+        option_choosen = input("Enter your choice (1-4): ")
+        if option_choosen in ["1", "2", "3", "4"]:
+            print("***************************************")
+            return option_choosen
+        else:
+            print("You can only enter a number between 1 and 4")
 
 def show_balance():
-    print(show_balance)
+    print(balance_remain)
 
 def deposit():
-    amount = input("How much money would you like to deposit in your bank account: ")
-    return amount
+    amount = input(int("How much money would you like to deposit in your bank account: "))
+    balance_remain = balance_remain + amount
 
 def withdraw():
     amount = input("What amount would you like to withdraw from your bank account: ")
@@ -32,14 +36,25 @@ def withdraw():
 def exit():
     exit
 
+def selection(num_choosen):
+    if num_choosen == "1":
+        show_balance()
+    elif num_choosen == "2":
+        deposit()
+    elif num_choosen == "3":
+        withdraw()
+    elif num_choosen == "4":
+        exit()
+   
+
 def main():
     print("***************************************")
     print("            Banking Program")
     print("***************************************")
     options()
     num_choosen = options_choosen()
-    if num_choosen == "1":
-        show_balance()
+    selection(num_choosen)
+    
 
     
 
