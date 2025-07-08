@@ -26,14 +26,17 @@ def show_balance():
     print(balance_remain)
 
 def deposit():
-    amount = input(int("How much money would you like to deposit in your bank account: "))
+    global balance_remain
+    amount = int(input("How much money would you like to deposit in your bank account: "))
     balance_remain = balance_remain + amount
 
 def withdraw():
-    amount = input("What amount would you like to withdraw from your bank account: ")
-    return amount
+    global balance_remain
+    amount = int(input("What amount would you like to withdraw from your bank account: "))
+    balance_remain -= amount
 
 def exit():
+    
     exit
 
 def selection(num_choosen):
@@ -44,16 +47,20 @@ def selection(num_choosen):
     elif num_choosen == "3":
         withdraw()
     elif num_choosen == "4":
-        exit()
+        return False
+    return True
+        
    
 
 def main():
-    print("***************************************")
-    print("            Banking Program")
-    print("***************************************")
-    options()
-    num_choosen = options_choosen()
-    selection(num_choosen)
+    while True:
+        print("***************************************")
+        print("            Banking Program")
+        print("***************************************")
+        options()
+        num_choosen = options_choosen()
+        if not selection(num_choosen):
+            break
     
 
     
